@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SITE 113</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body>
+    <ul class="fixed h-screen w-1/6 bg-black p-4 flex flex-col justify-start items-center gap-2">
+        <li>
+            <a href="#" onclick="allproducts()">All Products</a>
+        </li>
+        <li>
+            <a href="#" onclick="jewelery()">Jewelery</a>
+        </li>
+        <li>
+            <a href="#" onclick="electronics()">Electronics</a>
+        </li>
+        <li>
+            <a href="#" onclick="mensclothing()">Men's Clothing</a>
+        </li>
+        <li>
+            <a href="#" onclick="womensclothing()">Women's Clothing</a>
+        </li>
+    </ul>
+
+    <div id="productcontainer" class="w-5/6 bg-zinc-300"></div>
+    <script>
+
+
+
+        function allproducts() {
+
+        fetch('https://fakestoreapi.com/products')
+            .then(res => res.json())
+            .then(data => {
+                let container = document.getElementById("productcontainer");
+                container.innerHTML = "";
+                data.forEach(product => {
+                    container.innerHTML += `
+                        <div class='productdiv w-1/5 flex flex-col justify-start items-center'>
+                            <img class='product' src="${product.image}" alt="Product Image">
+                            <p>${product.title}</p>
+                            <p>${product.price}</p>
+                            <p>${product.category}</p>
+                        </div>
+                    `;
+                });
+            });
+
+        }
+
+        allproducts();
+
+function jewelery() {
+    
+            fetch('https://fakestoreapi.com/products/category/jewelery')
+            .then(res => res.json())
+            .then(data => {
+                let container = document.getElementById("productcontainer");
+
+                container.innerHTML = "";
+
+                data.forEach(product => {
+                    container.innerHTML += `
+                        <div class='productdiv w-1/5 flex flex-col justify-start items-center'>
+                            <img class='product' src="${product.image}" alt="Product Image">
+                            <p>${product.title}</p>
+                            <p>${product.price}</p>
+                        </div>
+                    `;
+                });
+            });
+
+        }
+
+        function electronics() {
+    
+    fetch('https://fakestoreapi.com/products/category/electronics')
+    .then(res => res.json())
+    .then(data => {
+        let container = document.getElementById("productcontainer");
+
+        container.innerHTML = "";
+
+        data.forEach(product => {
+            container.innerHTML += `
+                <div class='productdiv w-1/5 flex flex-col justify-start items-center'>
+                    <img class='product' src="${product.image}" alt="Product Image">
+                    <p>${product.title}</p>
+                    <p>${product.price}</p>
+                </div>
+            `;
+        });
+    });
+
+}
+
+function mensclothing() {
+    
+    fetch("https://fakestoreapi.com/products/category/men's clothing")
+    .then(res => res.json())
+    .then(data => {
+        let container = document.getElementById("productcontainer");
+
+        container.innerHTML = "";
+
+        data.forEach(product => {
+            container.innerHTML += `
+                <div class='productdiv w-1/5 flex flex-col justify-start items-center'>
+                    <img class='product' src="${product.image}" alt="Product Image">
+                    <p>${product.title}</p>
+                    <p>${product.price}</p>
+                </div>
+            `;
+        });
+    });
+
+}
+
+function womensclothing() {
+    
+    fetch("https://fakestoreapi.com/products/category/women's clothing")
+    .then(res => res.json())
+    .then(data => {
+        let container = document.getElementById("productcontainer");
+
+        container.innerHTML = "";
+
+        data.forEach(product => {
+            container.innerHTML += `
+                <div class='productdiv w-1/5 flex flex-col justify-start items-center'>
+                    <img class='product' src="${product.image}" alt="Product Image">
+                    <p>${product.title}</p>
+                    <p>${product.price}</p>
+                </div>
+            `;
+        });
+    });
+
+}
+    </script>
+</body>
+</html>
